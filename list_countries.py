@@ -22,10 +22,7 @@ def getCountriesList():
     final_string=str.join(final_countries_list)
     msg = "sorry no data"
     print(final_string)
-    if final_string:
-        return final_string
-    else:
-        return msg
+    return final_string or msg
 
 if __name__ == '__main__':
     getCountriesList()

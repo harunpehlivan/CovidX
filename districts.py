@@ -3,10 +3,6 @@ import json
 def districtData(state):
     res=requests.get('https://api.covid19india.org/v2/state_district_wise.json')
     data=res.json()
-    # stringify=json.dumps(data)
-    # print(stringify)
-
-    msg='sorry wrong state name or error in formatting'
     # print(type(data[1]['state']))
     # print(type(state))
     dicToPass={}
@@ -19,8 +15,8 @@ def districtData(state):
                 dicToPass[f"{data[x]['districtData'][y]['district']}"]=f"{data[x]['districtData'][y]['confirmed']}"
             # print(dicToPass)
             return dicToPass
-    if dicToPass=={}:
-        return msg
+    if not dicToPass:
+        return 'sorry wrong state name or error in formatting'
 #
 # if __name__== "main":
 #     name='Delhi'

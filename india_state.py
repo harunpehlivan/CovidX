@@ -16,7 +16,6 @@ def stateData(state_name):
     data = res.json()
     # print(data)
     toPass={}
-    msg="wrong state name or wrong spelling or formatting"
     for x in range(len(data['statewise'])):
         # print(data['statewise'][x]['state'])
         if state_name==data['statewise'][x]['state']:
@@ -32,5 +31,5 @@ def stateData(state_name):
            print(toPass)
            return toPass
 
-    return msg
+    return "wrong state name or wrong spelling or formatting"
 

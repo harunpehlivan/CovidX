@@ -18,14 +18,8 @@ def eachCountry(country):
 
     decoded=data.decode("utf-8")
     final_data=json.loads(decoded)
-    msg="This country either don't have corona or this country doesn't exist"
-    if len(final_data['response']) == 0:
-        print(msg)
-        return msg
-    # each_country=final_data['response']
-    # print(decoded)
-    else:
-        toPass = {
+    if len(final_data['response']) != 0:
+        return {
             'Country_name': final_data['response'][0]['country'],
             'new_cases': final_data['response'][0]['cases']['new'],
             'active_cases': final_data['response'][0]['cases']['active'],
@@ -36,7 +30,7 @@ def eachCountry(country):
             'new_deaths': final_data['response'][0]['deaths']['new'],
             'last_updated_time': final_data['response'][0]['time']
         }
-
-
-        return toPass
+    msg="This country either don't have corona or this country doesn't exist"
+    print(msg)
+    return msg
 

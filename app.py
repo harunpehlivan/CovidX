@@ -78,7 +78,6 @@ def bot():
         empty = "‎‎ ‎"
 
         msg.body(final_string1)
-# here in 1 request only 1500 characters can be send
     elif 'country' in incoming_msg:
         country_name = incoming_msg.split("country", 1)[1].strip()
         con_dic=eachCountry(country_name)
@@ -132,23 +131,16 @@ def bot():
 
         # str(state_name)
         print(state_name)
-        n=0
         empty = "‎‎ ‎"
         state_dic=districtData(state_name)
         if type(state_dic) == str:
             msg.body(state_dic)
         else:
-            for key in state_dic:
-                n = n+1
+            for n, key in enumerate(state_dic, start=1):
                 final_string = f"*{n}.* District name : *{key}*\n" \
                                f"Confirmed cases:  *{state_dic[key]}*\n{empty}"
 
                 msg.body(final_string)
-    # elif 'cat' in incoming_msg:
-    #     #     # return a cat pic
-    #     #     msg.media('https://cataas.com/cat')
-    #     #     responded = True
-
     elif "help" in incoming_msg:
         msg.body('''You can give me the following commands
     😀 *list* (which will give you the list of all the countries infected with covid-19 A-L)
